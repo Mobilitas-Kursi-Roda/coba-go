@@ -29,7 +29,7 @@ func main() {
 	router := gin.Default()
 	router.GET("/", getAlbums)
 
-	err := http3.ListenAndServe("0.0.0.0:8080", "cert/certificate.crt", "cert/private.key", router)
+	err := http3.ListenAndServe("0.0.0.0:443", "cert/certificate.crt", "cert/private.key", router)
 
 	if err != nil {
 		log.Printf("Server error: %v", err)
