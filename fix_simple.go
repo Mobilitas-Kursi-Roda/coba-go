@@ -25,26 +25,12 @@ func getAlbums(c *gin.Context) {
 }
 
 func main() {
-	//currentPath, err := os.Getwd()
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
 
 	router := gin.Default()
 	router.GET("/", getAlbums)
 
-	//router.Run("localhost:8080")
-	//
-	server := http3.Server{
-		Addr:    "0.0.0.0:443",
-		Port:    443,
-		Handler: router.Handler(),
-	}
+	err := http3.ListenAndServe("0.0.0.0:8080", "cert/certificate.crt", "cert/private.key", router)
 
-	//err := server.ListenAndServe()
-
-	err := server.ListenAndServeTLS("cert/certificate.crt", "cert/private.key")
-	//router.Run()
 	if err != nil {
 		log.Printf("Server error: %v", err)
 	}
