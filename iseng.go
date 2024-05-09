@@ -36,15 +36,15 @@ func main() {
 	//router.Run("localhost:8080")
 	//
 	server := http3.Server{
-		Addr:    "localhost:8080",
-		Port:    8080,
-		Handler: router,
+		Addr:    "0.0.0.0:443",
+		Port:    443,
+		Handler: router.Handler(),
 	}
 
 	//err := server.ListenAndServe()
 
 	err := server.ListenAndServeTLS("cert/certificate.crt", "cert/private.key")
-	router.Run()
+	//router.Run()
 	if err != nil {
 		log.Printf("Server error: %v", err)
 	}
