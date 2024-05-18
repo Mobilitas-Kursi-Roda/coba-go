@@ -16,9 +16,9 @@ func main() {
 	// }
 
 	type Akun struct {
-		title     string `bson:"title,omitempty"`
-		desc      string `bson:"desc,omitempty"`
-		thumbnail string `bson:"thumbnail,omitempty"`
+		Email    string `bson:"email,omitempty"`
+		Username string `bson:"username,omitempty"`
+		Password string `bson:"password,omitempty"`
 	}
 
 	uri := "mongodb://mokura:passmokura@93.188.167.17:27017/"
@@ -39,7 +39,7 @@ func main() {
 		}
 	}()
 
-	coll := client.Database("test_maxim").Collection("support_building")
+	coll := client.Database("test_maxim").Collection("user")
 
 	cursor, err := coll.Find(context.TODO(), bson.D{})
 	if err != nil {
